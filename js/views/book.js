@@ -9,6 +9,18 @@ app.BookView = Backbone.View.extend({
 	className: 'bookContainer',
 	template: _.template($('#bookTemplate').html()),
 
+	events: {
+		'click .delete': 'deleteBook'
+	},
+
+	deleteBook: function() {
+		// delete model
+		this.model.destroy();
+
+		// delete view
+		this.remove();
+	},
+
 	render: function() {
 		// template is a function that takes a JSON object and returns html
 		// this.el refers to what we defined as tagName
