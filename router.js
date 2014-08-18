@@ -23,7 +23,8 @@ module.exports = function(app) {
 		var book = new BookModel({
 			title: req.body.title,
 			author: req.body.author,
-			releaseDate: req.body.releaseDate
+			releaseDate: req.body.releaseDate,
+			keywords: req.body.keywords
 		});
 		book.save(function(err) {
 			if (!err) {
@@ -54,6 +55,7 @@ module.exports = function(app) {
 			book.title = req.body.title;
 			book.author = req.body.author;
 			book.releaseDate = req.body.releaseDate;
+			book.keywords = req.body.keywords;
 
 			book.save(function(err) {
 				if (!err) {
