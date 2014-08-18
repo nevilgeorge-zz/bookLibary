@@ -47,4 +47,38 @@ module.exports = function(app) {
 		});
 	});
 
+	// Update a book's details
+	app.put('/api/books/:id', function(req, res) {
+		console.log('Updating book ' + req.body.title);
+		return BookModel.findById(req.params.id, function(err, book) {
+			book.title = req.body.title;
+			book.author = req.body.author;
+			book.releaseDate = req.body.releaseDate;
+
+			book.save(function(err) {
+				if (!err) {
+					console.log('Book updated!');
+				} else {
+					console.log(err);
+				}
+				return res.send(book);
+			});
+		});
+	});
+
+	// Delete a book
+	app.delete('/api/books/:id', function(req, res) {
+		console.log('Deleting book with id: ' + req.params.id);
+		return BookModel.findById(req.params.id, function(err, book) {
+			return book.remove(function(err) {
+				if (!err) {
+					console.log('Book removed!');
+					return res.send('')
+				} else {
+					console.log(err);
+				}
+			});
+		});
+	});
+
 };
