@@ -16,7 +16,7 @@ app.LibraryView = Backbone.View.extend({
 	render: function() {
 		this.collection.each(function(item) {
 			this.renderBook(item);
-		});
+		}, this);
 	},
 
 	// render a book by creating a BookView and appending the element
