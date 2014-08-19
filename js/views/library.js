@@ -21,13 +21,20 @@ app.LibraryView = Backbone.View.extend({
 			}
 		});
 
-		this.collection.add(new app.Book(formData));
+		//this.collection.add(new app.Book(formData));
+		//change to this for the model to get persisted on the server
+		this.collection.create(formData);
 	},
 
-	initialize: function(initialBooks) {
-		this.collection = new app.Library(initialBooks);
+	initialize: function() {
+		// instantiate a library, starting it off as empty
+		this.collection = new app.Library();
+		// gets books from the url associated with the collection
+		this.collection.fetch({ reset: true });
 		this.render();
+
 		this.listenTo(this.collection, 'add', this.renderBook);
+		this.listenTo(this.collection, 'reset', this.render);
 	},
 
 	// render library by rendering each book in its collection

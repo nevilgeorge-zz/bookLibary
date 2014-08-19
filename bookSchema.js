@@ -13,6 +13,6 @@ var Book = new mongoose.Schema({
 	keywords: [ Keywords ]// adding a subschema to an existing schema
 });
 
-var BookModule = mongoose.model('Book', Book);
+var BookModel = mongoose.model('Book', Book);
 
-module.exports = BookModule;
+module.exports = BookModel;

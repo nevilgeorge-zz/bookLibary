@@ -10,5 +10,8 @@ app.Book = Backbone.Model.extend({
 		author: 'Unknown',
 		releaseDate: 'Unknown',
 		keywords: 'None'
-	}
+	},
+
+	// basically equating _id in database to the id attribute of a Backbone Model
+	idAttribute: '_id'
 });
