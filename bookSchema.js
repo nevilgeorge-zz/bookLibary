@@ -1,10 +1,7 @@
 // /bookSchema.js
 
-var mongoose = require('mongoose');
-
-var Keywords = new mongoose.Schema({
-	keyword: String
-});
+var mongoose = require('mongoose'),
+	Keywords = require('./keywordSchema.js');
 
 var Book = new mongoose.Schema({
 	title: String,
